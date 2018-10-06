@@ -25,7 +25,9 @@ class Login extends Component {
 	}
 
 	handleCity (propsCity) {
-		console.log('propsCity >>>>', propsCity.target.value)
+		this.setState({
+			user: propsUser.target.value
+		})
 	}
 
 	handlePassword (propsPassword) {
@@ -39,11 +41,17 @@ class Login extends Component {
 	}
 
 	validatePass () {
+		let status = false
+
 		if (this.state.pass == this.state.correctPass) {
-			console.log('password correcto')
+			status = true
 		} else {
-			console.log('password INCORRECTO')
+			status = false
 		}
+
+		this.setState({
+			isAuthenticated: status
+		})
 	}
 
 

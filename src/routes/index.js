@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Login from './Login'
+import ElectoralSystem from './ElectoralSystem'
 
 class App extends Component {
 	constructor(props) {
@@ -10,6 +11,7 @@ class App extends Component {
 		return (
 			<div>
 				<Login/>
+				<ElectoralSystem/>
 			</div>
 		)
 	}
