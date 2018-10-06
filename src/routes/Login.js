@@ -49,6 +49,8 @@ class Login extends Component {
 			status = false
 		}
 
+		this.props.handleChangeIsLogged(status)
+
 		this.setState({
 			isAuthenticated: status
 		})
@@ -56,6 +58,7 @@ class Login extends Component {
 
 
 	render() {
+
 		return (
 			<div>
 				<h1>Login Electoral System</h1>

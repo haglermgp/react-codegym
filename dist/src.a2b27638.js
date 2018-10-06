@@ -22199,6 +22199,7 @@ function (_Component) {
         status = false;
       }
 
+      this.props.handleChangeIsLogged(status);
       this.setState({
         isAuthenticated: status
       });
@@ -22327,7 +22328,7 @@ function (_Component) {
         style: {
           padding: 40
         }
-      }, this.state.candidates.map(function (item, index) {
+      }, _react.default.createElement("button", null, "Log Out"), " ", _react.default.createElement("br", null), this.state.candidates.map(function (item, index) {
         return _react.default.createElement("div", {
           key: index,
           style: {
@@ -22388,13 +22389,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 var App =
 /*#__PURE__*/
@@ -22402,15 +22403,35 @@ function (_Component) {
   _inherits(App, _Component);
 
   function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this.state = {
+      isLogged: false
+    };
+    _this.handleChangeIsLogged = _this.handleChangeIsLogged.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(App, [{
+    key: "handleChangeIsLogged",
+    value: function handleChangeIsLogged(props) {
+      console.log('this handleChangeIsLogged is executed', props);
+      this.setState({
+        isLogged: props
+      });
+      setTimeout(function () {
+        console.log('SET TIME OUT >>>>>>>>>>>>>>>>>');
+      }, 2000);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement(_Login.default, null), _react.default.createElement(_ElectoralSystem.default, null));
+      return _react.default.createElement("div", null, this.state.isLogged ? _react.default.createElement(_ElectoralSystem.default, null) : _react.default.createElement(_Login.default, {
+        handleChangeIsLogged: this.handleChangeIsLogged
+      }));
     }
   }]);
 
@@ -22463,7 +22484,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33935" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36867" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

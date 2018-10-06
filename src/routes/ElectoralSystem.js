@@ -59,6 +59,7 @@ class ElectoralSystem extends Component {
 	render() {
 		return (
 			<div style={{ padding: 40 }} >
+				<button>Log Out</button> <br/>
 
 				{
 					this.state.candidates.map((item, index) => (
