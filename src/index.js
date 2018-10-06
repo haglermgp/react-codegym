@@ -1,34 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Button from './components/Button.js'
-
-var ViewNew = (props) => {
-	let nameButton = "Happy" + " " + props.name
-	return (
-		<div style={{ color: 'green' }} >
-			<Button
-				name={nameButton}
-				color='red'
-			/>
-			<Button
-				name={nameButton}
-				color='black'
-			/>
-			<Button
-				name='HEY'
-				color='black'
-			/>
-
-			ASLKDJFASDLKF
-
-			<input type="name"/>
-		</div>
-
-	)
-}
+// import the main file of app
+import App from './routes' //./routes/index.js
 
 ReactDOM.render(
-	// vista('button'),
-	<ViewNew name="CodeGym" />,
+	<App name="Lui" apellido='Gonzales' />,
 	document.getElementById('root')
 )
