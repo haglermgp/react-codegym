@@ -22153,11 +22153,14 @@ function (_Component) {
     _this.state = {
       user: '',
       city: '',
-      pass: ''
+      pass: '',
+      correctPass: '123yes',
+      isAuthenticated: false
     };
     _this.handleUserName = _this.handleUserName.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleCity = _this.handleCity.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handlePassword = _this.handlePassword.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.validatePass = _this.validatePass.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -22176,12 +22179,25 @@ function (_Component) {
   }, {
     key: "handlePassword",
     value: function handlePassword(propsPassword) {
-      console.log('propsPassword >>>>', propsPassword.target.value);
+      // incorrect way
+      // this.state.pass = propsPassword.target.value 
+      // correact way
+      this.setState({
+        pass: propsPassword.target.value
+      });
+    }
+  }, {
+    key: "validatePass",
+    value: function validatePass() {
+      if (this.state.pass == this.state.correctPass) {
+        console.log('password correcto');
+      } else {
+        console.log('password INCORRECTO');
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      console.log('this.stat.user >>>>', this.state.user);
       return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Login Electoral System"), this.state.user, _react.default.createElement("input", {
         type: "text",
         name: "user",
@@ -22197,7 +22213,9 @@ function (_Component) {
         name: "pass",
         placeholder: "Password",
         onChange: this.handlePassword
-      }), " ", _react.default.createElement("br", null), _react.default.createElement("button", null, "Submit"));
+      }), " ", _react.default.createElement("br", null), _react.default.createElement("button", {
+        onClick: this.validatePass
+      }, "Submit"));
     }
   }]);
 
@@ -22307,7 +22325,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38947" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42031" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

@@ -7,19 +7,21 @@ class Login extends Component {
 		this.state = {
 			user: '',
 			city: '',
-			pass: ''
+			pass: '',
+			correctPass: '123yes',
+			isAuthenticated: false
 		}
 
 		this.handleUserName = this.handleUserName.bind(this)
 		this.handleCity = this.handleCity.bind(this)
 		this.handlePassword = this.handlePassword.bind(this)
+		this.validatePass = this.validatePass.bind(this)
 	}
 
 	handleUserName (propsUser) {
 		this.setState({
 			user: propsUser.target.value
 		})
-
 	}
 
 	handleCity (propsCity) {
@@ -27,13 +29,25 @@ class Login extends Component {
 	}
 
 	handlePassword (propsPassword) {
-		console.log('propsPassword >>>>', propsPassword.target.value)
+		// incorrect way
+		// this.state.pass = propsPassword.target.value 
+
+		// correact way
+		this.setState({
+			pass: propsPassword.target.value
+		})
+	}
+
+	validatePass () {
+		if (this.state.pass == this.state.correctPass) {
+			console.log('password correcto')
+		} else {
+			console.log('password INCORRECTO')
+		}
 	}
 
 
 	render() {
-		console.log('this.stat.user >>>>', this.state.user)
-
 		return (
 			<div>
 				<h1>Login Electoral System</h1>
@@ -42,12 +56,10 @@ class Login extends Component {
 				<input type="text" name='city' placeholder="City" onChange={this.handleCity} /> <br/>
 				<input type="password" name='pass' placeholder="Password" onChange={this.handlePassword} /> <br/>
 
-				<button>Submit</button>
+				<button onClick={this.validatePass} >Submit</button>
 			</div>
 		)
 	}
 }
-
-
 
 export default Login
