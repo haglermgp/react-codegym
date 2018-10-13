@@ -22320,6 +22320,11 @@ function (_Component) {
       });
     }
   }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.');
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -22409,13 +22414,36 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
-      isLogged: false
+      isLogged: false,
+      data: {}
     };
     _this.handleChangeIsLogged = _this.handleChangeIsLogged.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(App, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      console.log('execute 1 >>>>>');
+      fetch('https://jsonplaceholder.typicode.com/todos').then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        console.log('execute 2 >>>>>');
+
+        _this2.setState({
+          data: json
+        });
+      });
+      console.log('execute 3 >>>>>');
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('componentDidMount >>>> 2');
+    }
+  }, {
     key: "handleChangeIsLogged",
     value: function handleChangeIsLogged(props) {
       this.setState({
@@ -22426,7 +22454,13 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, this.state.isLogged ? _react.default.createElement(_ElectoralSystem.default, null) : _react.default.createElement(_Login.default, {
+      console.log('this.state.data >>>>', this.state.data);
+      return _react.default.createElement("div", null, _react.default.createElement("p", {
+        style: {
+          backgroundColor: 'grey',
+          margin: 10
+        }
+      }, _react.default.createElement("b", null, "id:"), " ", _react.default.createElement("span", null, this.state.data.id), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "title:"), " ", _react.default.createElement("span", null, this.state.data.title), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "userId:"), " ", _react.default.createElement("span", null, this.state.data.userId), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "completed:"), " ", _react.default.createElement("span", null, this.state.data.completed ? 'Si' : 'No')), this.state.isLogged ? _react.default.createElement(_ElectoralSystem.default, null) : _react.default.createElement(_Login.default, {
         handleChangeIsLogged: this.handleChangeIsLogged
       }));
     }
@@ -22481,7 +22515,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38521" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35641" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

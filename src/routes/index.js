@@ -7,10 +7,31 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			isLogged: false
+			isLogged: false,
+			data: {}
 		}
 
 		this.handleChangeIsLogged = this.handleChangeIsLogged.bind(this)
+	}
+
+	componentWillMount() {
+
+		console.log('execute 1 >>>>>')
+
+		fetch('https://jsonplaceholder.typicode.com/todos')
+			.then(response => response.json() )
+			.then(json => {
+				console.log('execute 2 >>>>>')
+				this.setState({
+					data: json
+				})
+			})
+
+		console.log('execute 3 >>>>>')
+	}
+
+	componentDidMount() {
+		console.log('componentDidMount >>>> 2')
 	}
 
 
@@ -25,8 +46,18 @@ class App extends Component {
 	}
 
 	render() {
+
+		console.log('this.state.data >>>>', this.state.data)
+
 		return (
 			<div>
+
+				<p style={{ backgroundColor: 'grey', margin: 10 }}>
+					<b>id:</b> <span>{this.state.data.id}</span> <br/>
+					<b>title:</b> <span>{this.state.data.title}</span> <br/>
+					<b>userId:</b> <span>{this.state.data.userId}</span> <br/>
+					<b>completed:</b> <span>{this.state.data.completed ? 'Si' : 'No'}</span> 
+				</p>
 
 				{
 					this.state.isLogged ? 

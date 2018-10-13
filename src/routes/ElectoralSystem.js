@@ -55,8 +55,13 @@ class ElectoralSystem extends Component {
 		})
 	}
 
+	componentWillMount() {
+		console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.')
+	}
+
 
 	render() {
+
 		return (
 			<div style={{ padding: 40 }} >
 				<button>Log Out</button> <br/>
