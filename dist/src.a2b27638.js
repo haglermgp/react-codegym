@@ -22303,7 +22303,8 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ElectoralSystem).call(this, props));
     _this.state = {
       candidates: candidatesData,
-      totalLikesState: totalLikes
+      totalLikesState: totalLikes,
+      data: []
     };
     _this.handleLike = _this.handleLike.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -22322,13 +22323,26 @@ function (_Component) {
   }, {
     key: "componentWillMount",
     value: function componentWillMount() {
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.');
+      var _this2 = this;
+
+      console.log('execute 1 >>>>>');
+      fetch('https://jsonplaceholder.typicode.com/todos').then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        console.log('execute 2 >>>>>');
+
+        _this2.setState({
+          data: json
+        });
+      });
+      console.log('execute 3 >>>>>');
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
+      console.log('render data >>>', this.state.data);
       return _react.default.createElement("div", {
         style: {
           padding: 40
@@ -22354,9 +22368,17 @@ function (_Component) {
           width: "80"
         }), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("div", null, _react.default.createElement("p", null, _react.default.createElement("b", null, "Name:"), " ", item.nameCandidate, " "), _react.default.createElement("p", null, _react.default.createElement("b", null, "Partido Politico:"), " ", item.politicGroup, " ")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("span", null, _react.default.createElement("b", null, "Likes:"), " ", item.likes, " "), " -", _react.default.createElement("span", null, _react.default.createElement("b", null, "Dislikes:"), " ", item.dislikes), " -", _react.default.createElement("span", null, _react.default.createElement("b", null, "Lovers:"), " ", item.lovers), " -"), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("button", {
           onClick: function onClick() {
-            return _this2.handleLike(index);
+            return _this3.handleLike(index);
           }
         }, "Like"), _react.default.createElement("button", null, "Dislike"), _react.default.createElement("button", null, "Love"))));
+      }), _react.default.createElement("br", null), _react.default.createElement("br", null), this.state.data.map(function (item, index) {
+        return _react.default.createElement("p", {
+          style: {
+            backgroundColor: 'grey',
+            margin: 10
+          },
+          key: index + 1
+        }, _react.default.createElement("b", null, "id:"), " ", _react.default.createElement("span", null, item.id), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "title:"), " ", _react.default.createElement("span", null, item.title), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "userId:"), " ", _react.default.createElement("span", null, item.userId), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "completed:"), " ", _react.default.createElement("span", null, item.completed ? 'Si' : 'No'));
       }));
     }
   }]);
@@ -22414,8 +22436,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
-      isLogged: false,
-      data: {}
+      isLogged: false
     };
     _this.handleChangeIsLogged = _this.handleChangeIsLogged.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -22423,26 +22444,10 @@ function (_Component) {
 
   _createClass(App, [{
     key: "componentWillMount",
-    value: function componentWillMount() {
-      var _this2 = this;
-
-      console.log('execute 1 >>>>>');
-      fetch('https://jsonplaceholder.typicode.com/todos').then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        console.log('execute 2 >>>>>');
-
-        _this2.setState({
-          data: json
-        });
-      });
-      console.log('execute 3 >>>>>');
-    }
+    value: function componentWillMount() {}
   }, {
     key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log('componentDidMount >>>> 2');
-    }
+    value: function componentDidMount() {}
   }, {
     key: "handleChangeIsLogged",
     value: function handleChangeIsLogged(props) {
@@ -22454,13 +22459,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log('this.state.data >>>>', this.state.data);
-      return _react.default.createElement("div", null, _react.default.createElement("p", {
-        style: {
-          backgroundColor: 'grey',
-          margin: 10
-        }
-      }, _react.default.createElement("b", null, "id:"), " ", _react.default.createElement("span", null, this.state.data.id), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "title:"), " ", _react.default.createElement("span", null, this.state.data.title), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "userId:"), " ", _react.default.createElement("span", null, this.state.data.userId), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "completed:"), " ", _react.default.createElement("span", null, this.state.data.completed ? 'Si' : 'No')), this.state.isLogged ? _react.default.createElement(_ElectoralSystem.default, null) : _react.default.createElement(_Login.default, {
+      return _react.default.createElement("div", null, this.state.isLogged ? _react.default.createElement(_ElectoralSystem.default, null) : _react.default.createElement(_Login.default, {
         handleChangeIsLogged: this.handleChangeIsLogged
       }));
     }
@@ -22515,7 +22514,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35641" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35065" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

@@ -38,7 +38,8 @@ class ElectoralSystem extends Component {
 
 		this.state = {
 			candidates: candidatesData,
-			totalLikesState: totalLikes
+			totalLikesState: totalLikes,
+			data: []
 		}
 
 		this.handleLike = this.handleLike.bind(this)
@@ -56,15 +57,28 @@ class ElectoralSystem extends Component {
 	}
 
 	componentWillMount() {
-		console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.')
+		console.log('execute 1 >>>>>')
+
+		fetch('https://jsonplaceholder.typicode.com/todos')
+			.then(response => response.json() )
+			.then(json => {
+				console.log('execute 2 >>>>>')
+				this.setState({
+					data: json
+				})
+			})
+
+		console.log('execute 3 >>>>>')
 	}
 
 
 	render() {
+		console.log('render data >>>', this.state.data)
 
 		return (
 			<div style={{ padding: 40 }} >
 				<button>Log Out</button> <br/>
+
 
 				{
 					this.state.candidates.map((item, index) => (
@@ -94,6 +108,20 @@ class ElectoralSystem extends Component {
 							</div>
 						</div>
 					))
+				}
+
+				<br/>
+				<br/>
+
+				{
+					this.state.data.map((item, index) => 
+							<p style={{ backgroundColor: 'grey', margin: 10 }} key={index+1} >
+								<b>id:</b> <span>{item.id}</span> <br/>
+								<b>title:</b> <span>{item.title}</span> <br/>
+								<b>userId:</b> <span>{item.userId}</span> <br/>
+								<b>completed:</b> <span>{item.completed ? 'Si' : 'No'}</span> 
+							</p>
+					)
 				}
 
 
