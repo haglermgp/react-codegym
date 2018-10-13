@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom'
 import App from './routes' //./routes/index.js
 
 ReactDOM.render(
-	<App name="Lui" apellido='Gonzales' />,
+	<App/>,
 	document.getElementById('root')
 )

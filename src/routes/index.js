@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+// Routes Files
 import Login from './Login'
 import ElectoralSystem from './ElectoralSystem'
+
+// components
+import Header from '../components/Header'
 
 class App extends Component {
 	constructor(props) {
@@ -13,42 +19,26 @@ class App extends Component {
 		this.handleChangeIsLogged = this.handleChangeIsLogged.bind(this)
 	}
 
-	componentWillMount() {
-
-	}
-
-	componentDidMount() {
-
-	}
-
-
 	handleChangeIsLogged(props) {
-
 		this.setState({
 			isLogged: props
 		})
 
-		setTimeout(() => {
-		},2000)
 	}
 
 	render() {
 
 		return (
-			<div>
-
-				{
-					this.state.isLogged ? 
-						<ElectoralSystem/>
-					: 
-						<Login handleChangeIsLogged={this.handleChangeIsLogged} />
-				}
-
-			</div>
+			<Router>
+				<div>
+					<Header/>
+					<hr/>
+					<Route path="/login" component={Login}/>
+					<Route path="/electoral" component={ElectoralSystem} />
+				</div>
+			</Router>
 		)
 	}
 }
-
-
 
 export default App

@@ -54,10 +54,13 @@ class ElectoralSystem extends Component {
 		this.setState({
 			candidates: newCandidate
 		})
+
+		setTimeout(() => {
+			this.props.history.push('/login')
+		}, 2000)
 	}
 
 	componentWillMount() {
-		console.log('execute 1 >>>>>')
 
 		fetch('https://jsonplaceholder.typicode.com/todos')
 			.then(response => response.json() )
@@ -66,15 +69,12 @@ class ElectoralSystem extends Component {
 				this.setState({
 					data: json
 				})
-			})
+			}) 
 
-		console.log('execute 3 >>>>>')
 	}
 
 
 	render() {
-		console.log('render data >>>', this.state.data)
-
 		return (
 			<div style={{ padding: 40 }} >
 				<button>Log Out</button> <br/>
