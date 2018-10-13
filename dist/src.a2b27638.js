@@ -22418,13 +22418,10 @@ function (_Component) {
   _createClass(App, [{
     key: "handleChangeIsLogged",
     value: function handleChangeIsLogged(props) {
-      console.log('this handleChangeIsLogged is executed', props);
       this.setState({
         isLogged: props
       });
-      setTimeout(function () {
-        console.log('SET TIME OUT >>>>>>>>>>>>>>>>>');
-      }, 2000);
+      setTimeout(function () {}, 2000);
     }
   }, {
     key: "render",
@@ -22484,7 +22481,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36867" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38521" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

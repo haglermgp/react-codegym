@@ -15,14 +15,12 @@ class App extends Component {
 
 
 	handleChangeIsLogged(props) {
-		console.log('this handleChangeIsLogged is executed', props)
 
 		this.setState({
 			isLogged: props
 		})
 
 		setTimeout(() => {
-			console.log('SET TIME OUT >>>>>>>>>>>>>>>>>')
 		},2000)
 	}
 
