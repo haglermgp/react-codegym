@@ -26639,7 +26639,177 @@ var _matchPath2 = _interopRequireDefault(require("./matchPath"));
 var _withRouter2 = _interopRequireDefault(require("./withRouter"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./BrowserRouter":"node_modules/react-router-dom/es/BrowserRouter.js","./HashRouter":"node_modules/react-router-dom/es/HashRouter.js","./Link":"node_modules/react-router-dom/es/Link.js","./MemoryRouter":"node_modules/react-router-dom/es/MemoryRouter.js","./NavLink":"node_modules/react-router-dom/es/NavLink.js","./Prompt":"node_modules/react-router-dom/es/Prompt.js","./Redirect":"node_modules/react-router-dom/es/Redirect.js","./Route":"node_modules/react-router-dom/es/Route.js","./Router":"node_modules/react-router-dom/es/Router.js","./StaticRouter":"node_modules/react-router-dom/es/StaticRouter.js","./Switch":"node_modules/react-router-dom/es/Switch.js","./generatePath":"node_modules/react-router-dom/es/generatePath.js","./matchPath":"node_modules/react-router-dom/es/matchPath.js","./withRouter":"node_modules/react-router-dom/es/withRouter.js"}],"src/routes/Login.js":[function(require,module,exports) {
+},{"./BrowserRouter":"node_modules/react-router-dom/es/BrowserRouter.js","./HashRouter":"node_modules/react-router-dom/es/HashRouter.js","./Link":"node_modules/react-router-dom/es/Link.js","./MemoryRouter":"node_modules/react-router-dom/es/MemoryRouter.js","./NavLink":"node_modules/react-router-dom/es/NavLink.js","./Prompt":"node_modules/react-router-dom/es/Prompt.js","./Redirect":"node_modules/react-router-dom/es/Redirect.js","./Route":"node_modules/react-router-dom/es/Route.js","./Router":"node_modules/react-router-dom/es/Router.js","./StaticRouter":"node_modules/react-router-dom/es/StaticRouter.js","./Switch":"node_modules/react-router-dom/es/Switch.js","./generatePath":"node_modules/react-router-dom/es/generatePath.js","./matchPath":"node_modules/react-router-dom/es/matchPath.js","./withRouter":"node_modules/react-router-dom/es/withRouter.js"}],"src/components/Header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header() {
+  return _react.default.createElement("div", {
+    style: {
+      background: 'purple'
+    }
+  }, "New Links! ", _react.default.createElement("br", null), " ", _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/login"
+  }, "Login"), " ", _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/electoral"
+  }, "Electoral"), " ", _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/perfil"
+  }, "Perfil "));
+};
+
+var _default = Header;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/components/footer.sass":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/Footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _footer = require("./footer.sass");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Footer = function Footer() {
+  return _react.default.createElement("div", {
+    className: _footer.footer
+  }, "MY FOOTER");
+};
+
+var _default = Footer;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./footer.sass":"src/components/footer.sass"}],"src/layouts/MainLayout.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Header = _interopRequireDefault(require("../components/Header"));
+
+var _Footer = _interopRequireDefault(require("../components/Footer"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// components
+var MainLayout = function MainLayout(props) {
+  return _react.default.createElement("div", null, _react.default.createElement(_Header.default, null), _react.default.createElement("div", null, props.children), _react.default.createElement(_Footer.default, null));
+};
+
+var _default = MainLayout;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../components/Header":"src/components/Header.js","../components/Footer":"src/components/Footer.js"}],"src/routes/Home/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _MainLayout = _interopRequireDefault(require("../../layouts/MainLayout"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// layouts
+var Home = function Home() {
+  return _react.default.createElement(_MainLayout.default, null, "HOME VIEW");
+};
+
+var _default = Home;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js","../../layouts/MainLayout":"src/layouts/MainLayout.js"}],"src/routes/Login/Login.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26763,7 +26933,7 @@ function (_Component) {
 
 var _default = Login;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/routes/ElectoralSystem.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/routes/Electoral/ElectoralSystem.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26920,7 +27090,7 @@ function (_Component) {
 
 var _default = ElectoralSystem;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/components/Header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/routes/Perfil/perfil-detail/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26934,17 +27104,68 @@ var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Header = function Header() {
-  return _react.default.createElement("div", null, "New Links! ", _react.default.createElement("br", null), " ", _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/login"
-  }, "Login"), " ", _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/electoral"
-  }, "Electoral"));
+var PerfilDetail = function PerfilDetail() {
+  return _react.default.createElement("div", null, "PERFIL DETAIL VIEW", _react.default.createElement(_reactRouterDom.Link, {
+    to: "/perfil/edit"
+  }, "Edit Perfil"));
 };
 
-var _default = Header;
+var _default = PerfilDetail;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js"}],"src/routes/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js"}],"src/routes/Perfil/perfil-edit/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PerfilEdit = function PerfilEdit() {
+  return _react.default.createElement("div", null, "PERFIL EDIT EDIT VIEW");
+};
+
+var _default = PerfilEdit;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/routes/Perfil/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _perfilDetail = _interopRequireDefault(require("./perfil-detail"));
+
+var _perfilEdit = _interopRequireDefault(require("./perfil-edit"));
+
+var _MainLayout = _interopRequireDefault(require("../../layouts/MainLayout.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// layouts
+var Perfil = function Perfil() {
+  return _react.default.createElement(_MainLayout.default, null, _react.default.createElement(_reactRouterDom.Route, {
+    exact: true,
+    path: "/perfil",
+    component: _perfilDetail.default
+  }), _react.default.createElement(_reactRouterDom.Route, {
+    exact: true,
+    path: "/perfil/edit",
+    component: _perfilEdit.default
+  }));
+};
+
+var _default = Perfil;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js","./perfil-detail":"src/routes/Perfil/perfil-detail/index.js","./perfil-edit":"src/routes/Perfil/perfil-edit/index.js","../../layouts/MainLayout.js":"src/layouts/MainLayout.js"}],"src/routes/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26956,11 +27177,15 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _Login = _interopRequireDefault(require("./Login"));
+var _index = _interopRequireDefault(require("./Home/index.js"));
 
-var _ElectoralSystem = _interopRequireDefault(require("./ElectoralSystem"));
+var _Login = _interopRequireDefault(require("./Login/Login.js"));
 
-var _Header = _interopRequireDefault(require("../components/Header"));
+var _ElectoralSystem = _interopRequireDefault(require("./Electoral/ElectoralSystem.js"));
+
+var _Perfil = _interopRequireDefault(require("./Perfil"));
+
+var _MainLayout = _interopRequireDefault(require("../layouts/MainLayout"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27012,12 +27237,21 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", null, _react.default.createElement(_Header.default, null), _react.default.createElement("hr", null), _react.default.createElement(_reactRouterDom.Route, {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/",
+        component: _index.default
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/login",
         component: _Login.default
       }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/electoral",
         component: _ElectoralSystem.default
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/perfil",
+        component: _Perfil.default
       })));
     }
   }]);
@@ -27027,7 +27261,7 @@ function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js","./Login":"src/routes/Login.js","./ElectoralSystem":"src/routes/ElectoralSystem.js","../components/Header":"src/components/Header.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js","./Home/index.js":"src/routes/Home/index.js","./Login/Login.js":"src/routes/Login/Login.js","./Electoral/ElectoralSystem.js":"src/routes/Electoral/ElectoralSystem.js","./Perfil":"src/routes/Perfil/index.js","../layouts/MainLayout":"src/layouts/MainLayout.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -27068,7 +27302,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34953" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45517" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

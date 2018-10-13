@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
 	return (
-		<div>
+		<div style={{ background: 'purple' }} >
 			New Links! <br/> <br/>
 			<Link to='/login' >Login</Link> <br/>
-			<Link to='/electoral' >Electoral</Link>
+			<Link to='/electoral' >Electoral</Link> <br/>
+			<Link to='/perfil' >Perfil </Link>
 		</div>
 	)
 }

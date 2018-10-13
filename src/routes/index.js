@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // Routes Files
-import Login from './Login'
-import ElectoralSystem from './ElectoralSystem'
+import Home from './Home/index.js'
+import Login from './Login/Login.js'
+import ElectoralSystem from './Electoral/ElectoralSystem.js'
+import Perfil from './Perfil'
 
 // components
-import Header from '../components/Header'
+
+// layouts
+import MainLayout from '../layouts/MainLayout'
 
 class App extends Component {
 	constructor(props) {
@@ -31,10 +35,10 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-					<Header/>
-					<hr/>
-					<Route path="/login" component={Login}/>
-					<Route path="/electoral" component={ElectoralSystem} />
+					<Route exact path="/" component={Home}/>
+					<Route exact path="/login" component={Login}/>
+					<Route exact path="/electoral" component={ElectoralSystem} />
+					<Route path="/perfil" component={Perfil} />
 				</div>
 			</Router>
 		)
