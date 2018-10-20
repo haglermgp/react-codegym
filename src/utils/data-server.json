@@ -1,14 +1,14 @@
 {
-  "profile": {
-    "name": "Angel Rocha",
-    "photo": "https://www.sintetia.com/wp-content/uploads/2012/05/Foto-perfil.jpg"
+  "profile":{
+      "name": "Angel Rocha",
+      "photo": "https://www.sintetia.com/wp-content/uploads/2012/05/Foto-perfil.jpg"
   },
   "menu": [
     { "id": 1, "title": "Perfil", "path": "/perfil" },
     { "id": 2, "title": "Configuraciones", "path": "/configuration" },
-    { "id": 3, "title": "Posts", "path": "posts" },
-    { "id": 4, "title": "Fotos", "path": "photos" },
-    { "id": 5, "title": "Friends", "path": "friends" }
+    { "id": 3, "title": "Posts", "path": "/posts" },
+    { "id": 4, "title": "Fotos", "path": "/photos" },
+    { "id": 5, "title": "Friends", "path": "/friends" }
   ],
   "posts": [
     { 

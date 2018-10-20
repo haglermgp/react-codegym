@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
 	return (
-		<div style={{ background: 'purple', color: 'white' }} >
+		<div style={{ background: 'purple', color: 'white', }} >
 			New Links! <br/> <br/>
 			<Link to='/login' >Login</Link> <br/>
 			<Link to='/electoral' >Electoral</Link> <br/>

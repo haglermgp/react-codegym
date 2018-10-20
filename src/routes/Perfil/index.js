@@ -8,10 +8,10 @@ import MainLayout from '../../layouts/MainLayout.js'
 
 const Perfil = () => {
 	return(
-		<MainLayout>
+		<div>
 			<Route exact path='/perfil' component={PerfilDetail} />
 			<Route exact path='/perfil/edit' component={PerfilEdit} />
-		</MainLayout>
+		</div>
 	)
 }
 

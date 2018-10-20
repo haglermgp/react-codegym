@@ -6,9 +6,9 @@ import MainLayout from '../../layouts/MainLayout'
 
 const Home = () => {
 	return(
-		<MainLayout>
+		<div>
 			HOME VIEW
-		</MainLayout>
+		</div>
 	)
 }
 

@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-// Routes Files
-import Home from './Home/index.js'
-import Perfil from './Perfil'
+import RouteList from './routes'
 
-// components
-
-// layouts
-import MainLayout from '../layouts/MainLayout'
-
-class App extends Component {
+class Routes extends Component {
 	constructor(props) {
 		super(props)
 	}
@@ -19,13 +12,10 @@ class App extends Component {
 
 		return (
 			<Router>
-				<div style={{ height: '100vh' }} >
-					<Route exact path="/" component={Home}/>
-					<Route path="/perfil" component={Perfil} />
-				</div>
+				<RouteList/>
 			</Router>
 		)
 	}
 }
 
-export default App
+export default Routes
