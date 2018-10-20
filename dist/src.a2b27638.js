@@ -26656,7 +26656,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Header = function Header() {
   return _react.default.createElement("div", {
     style: {
-      background: 'purple'
+      background: 'purple',
+      color: 'white'
     }
   }, "New Links! ", _react.default.createElement("br", null), " ", _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
     to: "/login"
@@ -26751,13 +26752,13 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _footer = require("./footer.sass");
+require("./footer.sass");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Footer = function Footer() {
   return _react.default.createElement("div", {
-    className: _footer.footer
+    className: "footer"
   }, "MY FOOTER");
 };
 
@@ -26781,7 +26782,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // components
 var MainLayout = function MainLayout(props) {
-  return _react.default.createElement("div", null, _react.default.createElement(_Header.default, null), _react.default.createElement("div", null, props.children), _react.default.createElement(_Footer.default, null));
+  return _react.default.createElement("div", {
+    style: {
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between'
+    }
+  }, _react.default.createElement(_Header.default, null), _react.default.createElement("div", null, props.children), _react.default.createElement(_Footer.default, null));
 };
 
 var _default = MainLayout;
@@ -26809,288 +26817,7 @@ var Home = function Home() {
 
 var _default = Home;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js","../../layouts/MainLayout":"src/layouts/MainLayout.js"}],"src/routes/Login/Login.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-var Login =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Login, _Component);
-
-  function Login(props) {
-    var _this;
-
-    _classCallCheck(this, Login);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
-    _this.state = {
-      user: '',
-      city: '',
-      pass: '',
-      correctPass: '123yes',
-      isAuthenticated: false
-    };
-    _this.handleUserName = _this.handleUserName.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleCity = _this.handleCity.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handlePassword = _this.handlePassword.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.validatePass = _this.validatePass.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    return _this;
-  }
-
-  _createClass(Login, [{
-    key: "handleUserName",
-    value: function handleUserName(propsUser) {
-      this.setState({
-        user: propsUser.target.value
-      });
-    }
-  }, {
-    key: "handleCity",
-    value: function handleCity(propsCity) {
-      this.setState({
-        user: propsUser.target.value
-      });
-    }
-  }, {
-    key: "handlePassword",
-    value: function handlePassword(propsPassword) {
-      // incorrect way
-      // this.state.pass = propsPassword.target.value 
-      // correact way
-      this.setState({
-        pass: propsPassword.target.value
-      });
-    }
-  }, {
-    key: "validatePass",
-    value: function validatePass() {
-      var status = false;
-
-      if (this.state.pass == this.state.correctPass) {
-        status = true;
-      } else {
-        status = false;
-      }
-
-      this.props.handleChangeIsLogged(status);
-      this.setState({
-        isAuthenticated: status
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Login Electoral System"), this.state.user, _react.default.createElement("input", {
-        type: "text",
-        name: "user",
-        placeholder: "User",
-        onChange: this.handleUserName
-      }), " ", _react.default.createElement("br", null), _react.default.createElement("input", {
-        type: "text",
-        name: "city",
-        placeholder: "City",
-        onChange: this.handleCity
-      }), " ", _react.default.createElement("br", null), _react.default.createElement("input", {
-        type: "password",
-        name: "pass",
-        placeholder: "Password",
-        onChange: this.handlePassword
-      }), " ", _react.default.createElement("br", null), _react.default.createElement("button", {
-        onClick: this.validatePass
-      }, "Submit"));
-    }
-  }]);
-
-  return Login;
-}(_react.Component);
-
-var _default = Login;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/routes/Electoral/ElectoralSystem.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-var totalLikes = 0;
-var candidatesData = [{
-  nameCandidate: 'Juan Bertoni',
-  politicGroup: 'Accion Lima',
-  photoUser: 'https://img.gestion.pe/files/article_content_ge_fotos/uploads/2018/09/29/5baf840d1e450.jpeg',
-  photoPoliticGroup: 'http://box2028.temp.domains/~apraloui/wp-content/uploads/2018/06/cropped-APRA-Logo-3.jpg',
-  likes: 0,
-  lovers: 0,
-  dislikes: 0
-}, {
-  nameCandidate: 'Alfredo Benavides',
-  politicGroup: 'Cuellos Blancos',
-  photoUser: 'https://cosas.pe/wp-content/uploads/2016/09/MANUEL-VELARDE2.png',
-  photoPoliticGroup: 'https://s3-eu-central-1.amazonaws.com/centaur-wp/designweek/prod/content/uploads/2017/03/24144845/Fanta-Logo-500x500.jpg',
-  likes: 0,
-  lovers: 0,
-  dislikes: 0
-}, {
-  nameCandidate: 'Lucho Quequesana',
-  politicGroup: 'Marea Azul',
-  photoUser: 'https://i.ytimg.com/vi/e8_g1WP1j4o/maxresdefault.jpg',
-  photoPoliticGroup: 'https://brandongaille.com/wp-content/uploads/2014/01/18-Most-Famous-Financial-Company-Logos.jpg',
-  likes: 0,
-  lovers: 0,
-  dislikes: 0
-}];
-
-var ElectoralSystem =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(ElectoralSystem, _Component);
-
-  function ElectoralSystem(props) {
-    var _this;
-
-    _classCallCheck(this, ElectoralSystem);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ElectoralSystem).call(this, props));
-    _this.state = {
-      candidates: candidatesData,
-      totalLikesState: totalLikes,
-      data: []
-    };
-    _this.handleLike = _this.handleLike.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    return _this;
-  }
-
-  _createClass(ElectoralSystem, [{
-    key: "handleLike",
-    value: function handleLike(props) {
-      var _this2 = this;
-
-      var newCandidate = this.state.candidates; // only change likes
-
-      newCandidate[props].likes = this.state.candidates[props].likes + 1;
-      this.setState({
-        candidates: newCandidate
-      });
-      setTimeout(function () {
-        _this2.props.history.push('/login');
-      }, 2000);
-    }
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var _this3 = this;
-
-      fetch('https://jsonplaceholder.typicode.com/todos').then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        console.log('execute 2 >>>>>');
-
-        _this3.setState({
-          data: json
-        });
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this4 = this;
-
-      return _react.default.createElement("div", {
-        style: {
-          padding: 40
-        }
-      }, _react.default.createElement("button", null, "Log Out"), " ", _react.default.createElement("br", null), this.state.candidates.map(function (item, index) {
-        return _react.default.createElement("div", {
-          key: index,
-          style: {
-            border: '1px solid black',
-            width: 200,
-            fontSize: 12,
-            padding: 10,
-            margin: 10,
-            display: 'inline-block'
-          }
-        }, _react.default.createElement("h3", null, "Candidate Number ", index + 1, " "), _react.default.createElement("img", {
-          src: item.photoUser,
-          alt: item.nameCandidate,
-          width: "200"
-        }), _react.default.createElement("hr", null), _react.default.createElement("img", {
-          src: item.photoPoliticGroup,
-          alt: item.politicGroup,
-          width: "80"
-        }), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("div", null, _react.default.createElement("p", null, _react.default.createElement("b", null, "Name:"), " ", item.nameCandidate, " "), _react.default.createElement("p", null, _react.default.createElement("b", null, "Partido Politico:"), " ", item.politicGroup, " ")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("span", null, _react.default.createElement("b", null, "Likes:"), " ", item.likes, " "), " -", _react.default.createElement("span", null, _react.default.createElement("b", null, "Dislikes:"), " ", item.dislikes), " -", _react.default.createElement("span", null, _react.default.createElement("b", null, "Lovers:"), " ", item.lovers), " -"), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("button", {
-          onClick: function onClick() {
-            return _this4.handleLike(index);
-          }
-        }, "Like"), _react.default.createElement("button", null, "Dislike"), _react.default.createElement("button", null, "Love"))));
-      }), _react.default.createElement("br", null), _react.default.createElement("br", null), this.state.data.map(function (item, index) {
-        return _react.default.createElement("p", {
-          style: {
-            backgroundColor: 'grey',
-            margin: 10
-          },
-          key: index + 1
-        }, _react.default.createElement("b", null, "id:"), " ", _react.default.createElement("span", null, item.id), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "title:"), " ", _react.default.createElement("span", null, item.title), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "userId:"), " ", _react.default.createElement("span", null, item.userId), " ", _react.default.createElement("br", null), _react.default.createElement("b", null, "completed:"), " ", _react.default.createElement("span", null, item.completed ? 'Si' : 'No'));
-      }));
-    }
-  }]);
-
-  return ElectoralSystem;
-}(_react.Component);
-
-var _default = ElectoralSystem;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/routes/Perfil/perfil-detail/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js","../../layouts/MainLayout":"src/layouts/MainLayout.js"}],"src/routes/Perfil/perfil-detail/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27179,10 +26906,6 @@ var _reactRouterDom = require("react-router-dom");
 
 var _index = _interopRequireDefault(require("./Home/index.js"));
 
-var _Login = _interopRequireDefault(require("./Login/Login.js"));
-
-var _ElectoralSystem = _interopRequireDefault(require("./Electoral/ElectoralSystem.js"));
-
 var _Perfil = _interopRequireDefault(require("./Perfil"));
 
 var _MainLayout = _interopRequireDefault(require("../layouts/MainLayout"));
@@ -27201,13 +26924,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 var App =
 /*#__PURE__*/
@@ -27215,40 +26938,22 @@ function (_Component) {
   _inherits(App, _Component);
 
   function App(props) {
-    var _this;
-
     _classCallCheck(this, App);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.state = {
-      isLogged: false
-    };
-    _this.handleChangeIsLogged = _this.handleChangeIsLogged.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
   }
 
   _createClass(App, [{
-    key: "handleChangeIsLogged",
-    value: function handleChangeIsLogged(props) {
-      this.setState({
-        isLogged: props
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Route, {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
+        style: {
+          height: '100vh'
+        }
+      }, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         component: _index.default
-      }), _react.default.createElement(_reactRouterDom.Route, {
-        exact: true,
-        path: "/login",
-        component: _Login.default
-      }), _react.default.createElement(_reactRouterDom.Route, {
-        exact: true,
-        path: "/electoral",
-        component: _ElectoralSystem.default
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/perfil",
         component: _Perfil.default
@@ -27261,7 +26966,7 @@ function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js","./Home/index.js":"src/routes/Home/index.js","./Login/Login.js":"src/routes/Login/Login.js","./Electoral/ElectoralSystem.js":"src/routes/Electoral/ElectoralSystem.js","./Perfil":"src/routes/Perfil/index.js","../layouts/MainLayout":"src/layouts/MainLayout.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/es/index.js","./Home/index.js":"src/routes/Home/index.js","./Perfil":"src/routes/Perfil/index.js","../layouts/MainLayout":"src/layouts/MainLayout.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -27302,7 +27007,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45517" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36167" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

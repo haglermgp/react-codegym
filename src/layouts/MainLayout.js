@@ -6,10 +6,10 @@ import Footer from '../components/Footer'
 
 const MainLayout = (props) => {
 	return (
-		<div>
+		<div style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} >
 			<Header/>
 			<div>
-				{props.children}					
+				{props.children}
 			</div>
 			<Footer/>
 		</div>

@@ -1,0 +1,30 @@
+{
+  "profile": {
+    "name": "Angel Rocha",
+    "photo": "https://www.sintetia.com/wp-content/uploads/2012/05/Foto-perfil.jpg"
+  },
+  "menu": [
+    { "id": 1, "title": "Perfil", "path": "/perfil" },
+    { "id": 2, "title": "Configuraciones", "path": "/configuration" },
+    { "id": 3, "title": "Posts", "path": "posts" },
+    { "id": 4, "title": "Fotos", "path": "photos" },
+    { "id": 5, "title": "Friends", "path": "friends" }
+  ],
+  "posts": [
+    { 
+      "title": "House of Cards",
+      "path": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium quisquam illum laudantium nobis harum minima provident similique a enim velit soluta labore, consectetur possimus, quos ullam ducimus, voluptatum, ipsa dolor!",
+      "photo": "https://rs3.sinahk.net/cap/3/2018/09/28/7/78337436310281a518747e97eb233206.jpg"
+    },
+    { 
+      "title": "Spider Man",
+      "path": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium quisquam illum laudantium nobis harum minima provident similique a enim velit soluta labore, consectetur possimus, quos ullam ducimus, voluptatum, ipsa dolor!",
+      "photo": "https://images-na.ssl-images-amazon.com/images/I/51rlXYhB07L.jpg"
+    },
+    { 
+      "title": "The Lord of Rings",
+      "path": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium quisquam illum laudantium nobis harum minima provident similique a enim velit soluta labore, consectetur possimus, quos ullam ducimus, voluptatum, ipsa dolor!",
+      "photo": "https://rs3.sinahk.net/cap/3/2018/09/28/7/78337436310281a518747e97eb233206.jpg"
+    }
+  ]
+}
